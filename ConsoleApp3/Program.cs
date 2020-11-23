@@ -9,6 +9,8 @@ namespace ConsoleApp3
             RestGetter rg = new RestGetter();
             rg.SayHello();
 
+            Console.WriteLine(rg.RekenWatUit(2, 5));
+
         }
     }
 }

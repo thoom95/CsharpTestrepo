@@ -10,5 +10,10 @@ namespace ConsoleApp3
         {
             Console.WriteLine("wadupppp?");
         }
+
+        public int RekenWatUit(int a, int b)
+        {
+            return a + b;
+        }
     }
 }
