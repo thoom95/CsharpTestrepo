@@ -8,7 +8,7 @@ namespace ConsoleApp3.Services
     {
         public string SerializeToJson(object obj)
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented);
         }
     }
 }
