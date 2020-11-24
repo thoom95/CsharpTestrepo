@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3
 {
-    public static class RestGetter
+    public static class HTTPClientSetup
     {
 
         public static HttpClient ApiClient { get; set; }

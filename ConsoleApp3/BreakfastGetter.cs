@@ -13,7 +13,7 @@ namespace ConsoleApp3
             string url = "http://localhost:8080/my_app_war/items/3";
             Console.WriteLine($"URL = { url } ");
 
-            HttpResponseMessage response = await RestGetter.ApiClient.GetAsync(url);
+            HttpResponseMessage response = await HTTPClientSetup.ApiClient.GetAsync(url);
             
                 Console.WriteLine("in using ok");
 

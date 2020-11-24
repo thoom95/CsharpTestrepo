@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using ConsoleApp3.Services;
 
 namespace ConsoleApp3
 {
@@ -9,31 +10,20 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            /*            RestGetter.InitClient();
-                        Console.WriteLine(BreakfastGetter.LoadBreakfast(3));*/
-            GetData().Wait();
-        }
+            HTTPClientSetup.InitClient();
+            GetAPIService apiService = new GetAPIService();
 
-        static async Task GetData()
-        {
-            using (var client = new HttpClient())
+            //Product prod2 = apiService.GetData("http://localhost:8080/my_app_war/items/3").GetAwaiter().GetResult();
+            Task<Product> task1 = Task.Run(() =>
             {
-                client.BaseAddress = new Uri("http://localhost:8080/my_app_war/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //GET Method
+                return apiService.GetData("http://localhost:8080/my_app_war/items/3");
+            });
 
-                HttpResponseMessage response = await client.GetAsync("items/3");
-                if (response.IsSuccessStatusCode)
-                {
-                    Product prod = await response.Content.ReadAsAsync<Product>();
-                    Console.WriteLine("ID = " + prod.Title);
-                }
-                else
-                {
-                    throw new HttpRequestException();
-                }
-            }
+            Console.WriteLine("test " + task1.Result.Id + " " + task1.Result.Name);
         }
+
+
+
+
     }
 }
