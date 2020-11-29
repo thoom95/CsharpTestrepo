@@ -17,9 +17,10 @@ namespace ConsoleApp3
             JsonConvertService jsonConverter = new JsonConvertService();
             IOService iOService = new IOService();
 
-            string url = "https://test-2.ovotrack.io/api/report/swagger/index.html#/Label/Label_GetLabel";
+            //string url = "https://test-2.ovotrack.io/api/report/swagger/index.html#/Label/Label_GetLabel";
             string url2 = "https://test-2.ovotrack.io/api/report/label?take=3&skip=3";
-            string url3 = "https://test-2.ovotrack.io/api/report/label";
+            //string url3 = "https://test-2.ovotrack.io/api/report/label";
+
             Task <Label> task1 = Task.Run(() =>
             {
                 return apiService.GetData(url2);
