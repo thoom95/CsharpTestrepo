@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp3.Services
+namespace IntegrationTestTool.Services
 {
     public class IOService
     {

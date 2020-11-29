@@ -4,9 +4,9 @@ using System.Text;
 
 namespace IntegrationTestTool.Models
 {
-    public class Label
+    public class AuthRequest
     {
-        public int Total { get; set; }
-        public List<Result> Results { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

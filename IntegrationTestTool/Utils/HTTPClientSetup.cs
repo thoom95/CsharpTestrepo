@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace IntegrationTestTool
 {
     public static class HTTPClientSetup
     {

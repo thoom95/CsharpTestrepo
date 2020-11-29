@@ -1,4 +1,7 @@
-﻿using ConsoleApp3.Models;
+﻿using IntegrationTestTool.Models;
+using IntegrationTestTool.Models;
+using IntegrationTestTool.Services;
+using IntegrationTestTool.Utils;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -6,30 +9,74 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3.Services
+namespace IntegrationTestTool.Services
 {
     public class GetAPIService
     {
-        public async Task<Label> GetData(string url)
+        JsonConvertService JsonConvertService = new JsonConvertService();
+        public async Task<object> GetLabels(object obj)
         {
-            /*            using (var client = new HttpClient())
-                        {
-                            client.BaseAddress = new Uri("http://localhost:8080/my_app_war/");
-                            client.DefaultRequestHeaders.Accept.Clear();
-                            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                            //GET Method
-            */
+            string url;
+            if(obj.GetType() == typeof(Label))
+            {
+                Console.WriteLine("this is label");
+                url = APIConstants.GETLABELS;
+
+            }
+            else
+            {
+                Console.WriteLine("is printer :(");
+                url = APIConstants.GETPRINTERS;
+            }
             HTTPClientSetup.ApiClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsImlhdCI6MTYwNjY2ODAxMywiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTYwNjY2ODAxMywiZXhwIjoxNjA2ODQwODEzLCJpc3MiOiJPdm90cmFjayIsImF1ZCI6Ik92b3RyYWNrIHVzZXJzIn0.Qhl8wh5t3h0hc2jwIi5io0pKoCbDrCvQ0PQ7b9lQcUc");
+                new AuthenticationHeaderValue("bearer", RequestJSONBuilderService.KatalonRequest.BearerToken);
             using (HttpResponseMessage response = await HTTPClientSetup.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
                 {
+                    if (obj.GetType() == typeof(Label))
+                    {
+
+
+                        Console.WriteLine(response.Content);
+                        Label label = await response.Content.ReadAsAsync<Label>();
+                        //Console.WriteLine("ID = " + label.Total);
+                        return label;
+                    }
+                    else
+                    {
+                        //return printer
+                        return null;
+                    }
+                }
+                else
+                {
+                    throw new HttpRequestException();
+                }
+            }
+        }
+
+        public async Task<string> GetAuthToken(string username, string password)
+        {
+            AuthRequest requestBody = new AuthRequest
+            {
+                Username = username,
+                Password = password
+            };
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(APIConstants.AUTHURL),
+                Content = new StringContent(JsonConvertService.SerializeToJson(requestBody), Encoding.UTF8, "application/json")
+            };
+
+            HTTPClientSetup.ApiClient.DefaultRequestHeaders.Clear();
+            using (HttpResponseMessage response = await HTTPClientSetup.ApiClient.SendAsync(request))
+            {
+                if (response.IsSuccessStatusCode)
+                {
                     Console.WriteLine(response.Content);
-                    //Product label = await response.Content.ReadAsAsync<Product>();
-                    Label label = await response.Content.ReadAsAsync<Label>();
-                    Console.WriteLine("ID = " + label.Total);
-                    return label;
+                    return await response.Content.ReadAsStringAsync();
                 }
                 else
                 {
