@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IntegrationTestTool.Models.KatalonRequestBody
+﻿namespace IntegrationTestTool.Models.KatalonRequestBody
 {
     public class KtLabel
     {

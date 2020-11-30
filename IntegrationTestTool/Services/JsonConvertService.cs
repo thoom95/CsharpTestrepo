@@ -1,6 +1,5 @@
-﻿using System;
+﻿using IntegrationTestTool.Models;
 using System.Collections.Generic;
-using System.Text;
 
 namespace IntegrationTestTool.Services
 {
@@ -9,6 +8,26 @@ namespace IntegrationTestTool.Services
         public string SerializeToJson(object obj)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented);
+        }
+
+        internal List<int> ProcessJsonToLabelIds(Label label)
+        {
+            List<int> labelIds = new List<int>();
+            for (int i = 0; i < 10; i += 2)
+            {
+                labelIds.Add(label.Results[i].Id);
+            }
+            return labelIds;
+        }
+
+        internal List<string> ProcessJsonToPrinterNames(Printer allPrinterResponse)
+        {
+            List<string> printerNames = new List<string>();
+            for (int i = 0; i < 10; i += 2)
+            {
+                printerNames.Add(allPrinterResponse.Results[i].Name);
+            }
+            return printerNames;
         }
     }
 }

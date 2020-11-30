@@ -1,9 +1,6 @@
 ﻿using IntegrationTestTool.Models;
-using IntegrationTestTool.Models;
-using IntegrationTestTool.Services;
 using IntegrationTestTool.Utils;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -13,22 +10,19 @@ namespace IntegrationTestTool.Services
 {
     public class GetAPIService
     {
-        JsonConvertService JsonConvertService = new JsonConvertService();
-        public async Task<object> GetLabels(object obj)
+        readonly JsonConvertService JsonConvertService = new JsonConvertService();
+        public async Task<object> GetGeneric(object obj)
         {
             string url;
-            if(obj.GetType() == typeof(Label))
+            if (obj.GetType() == typeof(Label))
             {
-                Console.WriteLine("this is label");
                 url = APIConstants.GETLABELS;
-
             }
             else
             {
-                Console.WriteLine("is printer :(");
                 url = APIConstants.GETPRINTERS;
             }
-            HTTPClientSetup.ApiClient.DefaultRequestHeaders.Authorization = 
+            HTTPClientSetup.ApiClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", RequestJSONBuilderService.KatalonRequest.BearerToken);
             using (HttpResponseMessage response = await HTTPClientSetup.ApiClient.GetAsync(url))
             {
@@ -36,17 +30,13 @@ namespace IntegrationTestTool.Services
                 {
                     if (obj.GetType() == typeof(Label))
                     {
-
-
-                        Console.WriteLine(response.Content);
                         Label label = await response.Content.ReadAsAsync<Label>();
-                        //Console.WriteLine("ID = " + label.Total);
                         return label;
                     }
                     else
                     {
-                        //return printer
-                        return null;
+                        Printer printer = await response.Content.ReadAsAsync<Printer>();
+                        return printer;
                     }
                 }
                 else
@@ -75,8 +65,8 @@ namespace IntegrationTestTool.Services
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine(response.Content);
-                    return await response.Content.ReadAsStringAsync();
+                    BearerToken token = Newtonsoft.Json.JsonConvert.DeserializeObject<BearerToken>(response.Content.ReadAsStringAsync().Result);
+                    return token.Token;
                 }
                 else
                 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IntegrationTestTool.Models
+﻿namespace IntegrationTestTool.Models
 {
     public class AuthRequest
     {

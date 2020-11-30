@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IntegrationTestTool.Services
+﻿namespace IntegrationTestTool.Services
 {
     public class IOService
     {
