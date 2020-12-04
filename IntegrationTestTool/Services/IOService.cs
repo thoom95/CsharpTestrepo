@@ -1,6 +1,6 @@
 ﻿namespace IntegrationTestTool.Services
 {
-    public class IOService
+    public class IOService : IIOService
     {
         public void WriteJsonToFile(string stringToWrite, string fileName)
         {

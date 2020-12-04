@@ -9,9 +9,9 @@ namespace IntegrationTestTool
 {
     public class Program
     {
-        static JsonConvertService jsonConverter;
-        static IOService iOService;
-        static GetAPIService apiService;
+        static IJsonConvertService jsonConverter;
+        static IIOService iOService;
+        static IGetAPIService apiService;
 
         static async Task Main(string[] args)
         {

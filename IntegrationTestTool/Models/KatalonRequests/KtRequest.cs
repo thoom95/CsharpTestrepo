@@ -1,5 +1,4 @@
-﻿using IntegrationTestTool.Models.KatalonRequestBody;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace IntegrationTestTool.Models.KatalonRequests
 {

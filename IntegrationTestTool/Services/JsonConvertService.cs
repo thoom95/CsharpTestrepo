@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace IntegrationTestTool.Services
 {
-    public class JsonConvertService
+    public class JsonConvertService : IJsonConvertService
     {
         public string SerializeToJson(object obj)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented);
         }
 
-        internal List<int> ProcessJsonToLabelIds(Label label)
+        public List<int> ProcessJsonToLabelIds(Label label)
         {
             List<int> labelIds = new List<int>();
             for (int i = 0; i < 10; i += 2)
@@ -20,7 +20,7 @@ namespace IntegrationTestTool.Services
             return labelIds;
         }
 
-        internal List<string> ProcessJsonToPrinterNames(Printer allPrinterResponse)
+        public List<string> ProcessJsonToPrinterNames(Printer allPrinterResponse)
         {
             List<string> printerNames = new List<string>();
             for (int i = 0; i < 10; i += 2)

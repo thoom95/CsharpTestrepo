@@ -1,4 +1,4 @@
-﻿namespace IntegrationTestTool.Models.KatalonRequestBody
+﻿namespace IntegrationTestTool.Models.KatalonRequests
 {
     public class KtLabel
     {

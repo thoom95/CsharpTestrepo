@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace IntegrationTestTool.Services
 {
-    public class GetAPIService
+    public class GetAPIService : IGetAPIService
     {
-        readonly JsonConvertService JsonConvertService = new JsonConvertService();
+        readonly IJsonConvertService JsonConvertService = new JsonConvertService();
         public async Task<object> GetGeneric(object obj)
         {
             string url;

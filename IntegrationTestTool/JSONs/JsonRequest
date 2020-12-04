@@ -1,5 +1,5 @@
 {
-  "BearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsImlhdCI6MTYwNjc0ODkyMCwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTYwNjc0ODkyMCwiZXhwIjoxNjA2OTIxNzIwLCJpc3MiOiJPdm90cmFjayIsImF1ZCI6Ik92b3RyYWNrIHVzZXJzIn0.ygGyfLpfLD617rJ-7Ou211zg3D5OEzvrmdM0p9d2ipg",
+  "BearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsImlhdCI6MTYwNzA4NTk2NSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTYwNzA4NTk2NSwiZXhwIjoxNjA3MjU4NzY1LCJpc3MiOiJPdm90cmFjayIsImF1ZCI6Ik92b3RyYWNrIHVzZXJzIn0.7SVWUOYhqcP_npPThkPwJxaamtIBUGl2Iuzt5VWoLyo",
   "Labels": [
     {
       "Take": 0,
@@ -37,8 +37,8 @@
     },
     {
       "Select": "HP Officejet Pro 8620 (Network)",
-      "Take": 1,
-      "Skip": 1
+      "Take": 10,
+      "Skip": 10
     }
   ],
   "Print": [
