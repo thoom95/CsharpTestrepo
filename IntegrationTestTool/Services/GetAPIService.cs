@@ -11,7 +11,9 @@ namespace IntegrationTestTool.Services
     public class GetAPIService : IGetAPIService
     {
         readonly IJsonConvertService JsonConvertService = new JsonConvertService();
-        public async Task<object> GetGeneric(object obj)
+        HTTPClientSetup httpClient = HTTPClientSetup.Instance;
+
+        public async Task<object> GetGeneric(object obj, string bearer)
         {
             string url;
             if (obj.GetType() == typeof(Label))
@@ -21,10 +23,10 @@ namespace IntegrationTestTool.Services
             else
             {
                 url = APIConstants.GETPRINTERS;
-            }
-            HTTPClientSetup.ApiClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", RequestJSONBuilderService.KatalonRequest.BearerToken);
-            using (HttpResponseMessage response = await HTTPClientSetup.ApiClient.GetAsync(url))
+            }         
+            httpClient.ApiClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("bearer", bearer);
+            using (HttpResponseMessage response = await httpClient.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -60,8 +62,8 @@ namespace IntegrationTestTool.Services
                 Content = new StringContent(JsonConvertService.SerializeToJson(requestBody), Encoding.UTF8, "application/json")
             };
 
-            HTTPClientSetup.ApiClient.DefaultRequestHeaders.Clear();
-            using (HttpResponseMessage response = await HTTPClientSetup.ApiClient.SendAsync(request))
+            httpClient.ApiClient.DefaultRequestHeaders.Clear();
+            using (HttpResponseMessage response = await httpClient.ApiClient.SendAsync(request))
             {
                 if (response.IsSuccessStatusCode)
                 {

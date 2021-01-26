@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace IntegrationTestTool.Services
 {
-    public static class RequestJSONBuilderService
+    public class RequestJSONBuilderService
     {
-        public static KtRequest KatalonRequest { get; set; }
+        public KtRequest KatalonRequest { get; set; }
 
-        static RequestJSONBuilderService()
+        public RequestJSONBuilderService()
         {
             KatalonRequest = new KtRequest();
         }
 
-        internal static void AddPrinterRequest(List<string> printerNames)
+        internal void AddPrinterRequest(List<string> printerNames)
         {
             KatalonRequest.Printers = new List<KtPrinter>
             {
@@ -24,7 +24,7 @@ namespace IntegrationTestTool.Services
             };
         }
 
-        internal static void BuildPrintRequest(List<int> labelIds, List<string> printerNames)
+        internal void BuildPrintRequest(List<int> labelIds, List<string> printerNames)
         {
             KatalonRequest.Print = new List<KtPrint>
             {
@@ -71,7 +71,7 @@ namespace IntegrationTestTool.Services
             };
         }
 
-        internal static void AddLabelRequest(List<int> labelIds)
+        internal void AddLabelRequest(List<int> labelIds)
         {
             KatalonRequest.Labels = new List<KtLabel>
             {
