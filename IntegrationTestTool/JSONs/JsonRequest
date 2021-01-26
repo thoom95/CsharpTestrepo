@@ -1,0 +1,81 @@
+{
+  "BearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsImlhdCI6MTYxMTY3NDI3MSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTYxMTY3NDI3MSwiZXhwIjoxNjExODQ3MDcxLCJpc3MiOiJPdm90cmFjayIsImF1ZCI6Ik92b3RyYWNrIHVzZXJzIn0.U4ImFxsRgXi5XX-D-smq6CkYTwn-M1TdeMjGQ9Z3Mx0",
+  "Labels": [
+    {
+      "Take": 0,
+      "Skip": 0
+    },
+    {
+      "Take": 3,
+      "Skip": 3
+    },
+    {
+      "Take": 5,
+      "Skip": 5
+    }
+  ],
+  "Printers": [
+    {
+      "Select": "WinDP1",
+      "Take": 0,
+      "Skip": 0
+    },
+    {
+      "Select": "WinDP3",
+      "Take": 3,
+      "Skip": 3
+    },
+    {
+      "Select": "WinDP5",
+      "Take": 5,
+      "Skip": 5
+    },
+    {
+      "Select": "Foxit Reader PDF Printer",
+      "Take": 2,
+      "Skip": 2
+    },
+    {
+      "Select": "HP Officejet Pro 8620 (Network)",
+      "Take": 10,
+      "Skip": 10
+    }
+  ],
+  "Print": [
+    {
+      "LabelId": 1,
+      "QueryParameterValue": 181429,
+      "PrinterName": "WinDP1",
+      "Landscape": true,
+      "Copies": 0
+    },
+    {
+      "LabelId": 26,
+      "QueryParameterValue": 181441,
+      "PrinterName": "WinDP3",
+      "Landscape": false,
+      "Copies": 2
+    },
+    {
+      "LabelId": 28,
+      "QueryParameterValue": 181430,
+      "PrinterName": "WinDP5",
+      "Landscape": false,
+      "Copies": 0
+    },
+    {
+      "LabelId": 31,
+      "QueryParameterValue": 181432,
+      "PrinterName": "Foxit Reader PDF Printer",
+      "Landscape": true,
+      "Copies": 10
+    },
+    {
+      "LabelId": 33,
+      "QueryParameterValue": 181439,
+      "PrinterName": "HP Officejet Pro 8620 (Network)",
+      "Landscape": false,
+      "Copies": 6
+    }
+  ]
+}
